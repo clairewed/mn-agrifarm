@@ -3,92 +3,404 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MN Agrifarm Hiring</title>
+  <title>Careers | MN Agrifarm</title>
+
   <style>
-    body{margin:0;font-family:Arial,system-ui;background:#f4f7f3}
-    header{background:#1f5f2e;color:#fff;padding:22px;text-align:center}
-    main{max-width:980px;margin:0 auto;padding:18px}
-    .card{background:#fff;border-radius:10px;padding:16px;margin:14px 0;box-shadow:0 2px 10px rgba(0,0,0,.08)}
-    label{display:block;margin-top:10px;font-weight:700}
-    input,select,textarea{width:100%;padding:10px;margin-top:6px;border:1px solid #cfcfcf;border-radius:8px}
-    textarea{min-height:110px}
-    button{margin-top:14px;background:#2fa84f;color:#fff;border:0;padding:12px 16px;border-radius:8px;font-weight:800;cursor:pointer}
-    button:hover{background:#23853d}
-    .muted{color:#4b6353}
-    .row{display:grid;grid-template-columns:1fr;gap:12px}
-    @media(min-width:700px){.row{grid-template-columns:1fr 1fr}}
-    .ok{padding:10px;border-radius:8px;background:#e9f8ee;border:1px solid #bfe9cc;color:#1f5f2e;margin-top:10px;display:none}
-    .err{padding:10px;border-radius:8px;background:#ffecec;border:1px solid #f2b8b8;color:#8a1f1f;margin-top:10px;display:none}
+    :root{
+      --bg1:#071a12;
+      --bg2:#0b2b1c;
+      --card:rgba(255,255,255,.08);
+      --card2:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.14);
+      --text:#ecfff3;
+      --muted:#bfe3cc;
+      --brand:#22c55e;
+      --brand2:#16a34a;
+      --warn:#fbbf24;
+      --shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 420px at 15% 0%, rgba(34,197,94,.25), transparent 60%),
+        radial-gradient(700px 420px at 85% 10%, rgba(251,191,36,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+    }
+    a{ color:inherit; }
+
+    .wrap{ max-width:1120px; margin:0 auto; padding:22px 16px 44px; }
+
+    /* Top bar */
+    .top{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:10px 2px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.6px;
+    }
+    .logoDot{
+      width:12px;height:12px;border-radius:999px;background:var(--brand);
+      box-shadow:0 0 0 6px rgba(34,197,94,.15);
+    }
+    .nav{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:11px 14px; border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      text-decoration:none; font-weight:700;
+    }
+    .btn.primary{
+      background:linear-gradient(180deg, var(--brand), var(--brand2));
+      border-color:transparent; color:#062010;
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:14px;
+      padding:22px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:-80px -120px auto auto;
+      width:420px; height:420px; border-radius:999px;
+      background:radial-gradient(circle at 30% 30%, rgba(34,197,94,.35), transparent 55%);
+      filter: blur(2px);
+      pointer-events:none;
+    }
+    .hero h1{ margin:0 0 8px; font-size:40px; line-height:1.05; }
+    .hero p{ margin:0 0 14px; color:var(--muted); max-width:78ch; }
+    .hero .cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+    .pillRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:8px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .pill .dot{
+      width:8px;height:8px;border-radius:999px;background:var(--warn);
+      box-shadow:0 0 0 4px rgba(251,191,36,.14);
+    }
+
+    /* Sections */
+    .grid{ display:grid; gap:14px; }
+    @media(min-width:900px){
+      .grid.cols-3{ grid-template-columns:repeat(3, 1fr); }
+      .grid.cols-2{ grid-template-columns:1.15fr .85fr; }
+    }
+
+    .card{
+      padding:16px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:var(--card);
+      box-shadow: 0 8px 22px rgba(0,0,0,.18);
+    }
+    .card.soft{ background:var(--card2); }
+    .card h2{ margin:0 0 10px; font-size:20px; }
+    .muted{ color:var(--muted); }
+    ul, ol{ margin:10px 0 0; padding-left:18px; color:var(--muted); }
+    li{ margin:6px 0; }
+
+    .tagRow{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      font-size:12px; color:var(--muted);
+    }
+    .tag .miniDot{
+      width:7px;height:7px;border-radius:999px;background:var(--brand);
+      box-shadow:0 0 0 4px rgba(34,197,94,.12);
+    }
+
+    /* Roles */
+    .role h3{ margin:0 0 6px; font-size:16px; }
+    .role p{ margin:0; color:var(--muted); }
+
+    /* Form */
+    form{ display:grid; gap:10px; }
+    label{ font-size:13px; color:var(--muted); font-weight:700; }
+    input, select, textarea{
+      width:100%;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.18);
+      color:var(--text);
+      outline:none;
+    }
+    input::placeholder, textarea::placeholder{ color:rgba(191,227,204,.7); }
+    textarea{ min-height:120px; resize:vertical; }
+    .two{ display:grid; gap:10px; }
+    @media(min-width:720px){ .two{ grid-template-columns:1fr 1fr; } }
+
+    .ok, .err{
+      display:none; padding:10px 12px; border-radius:12px; font-weight:700;
+      border:1px solid var(--border);
+    }
+    .ok{ background:rgba(34,197,94,.12); color:#d6ffe5; }
+    .err{ background:rgba(239,68,68,.12); color:#ffd3d3; }
+
+    .footer{
+      margin-top:18px;
+      padding-top:14px;
+      border-top:1px solid rgba(255,255,255,.14);
+      color:rgba(191,227,204,.85);
+      font-size:13px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Join MN Agrifarm</h1>
-    <p class="muted" style="color:#d8f0df;margin:6px 0 0">Growing quality. Growing careers.</p>
-  </header>
-
-  <main>
-    <div class="card">
-      <h2>Open Positions</h2>
-      <ul>
-        <li>Farm Hand / Field Worker</li>
-        <li>Livestock Attendant</li>
-        <li>Farm Store Assistant</li>
-      </ul>
+  <div class="wrap">
+    <!-- Top -->
+    <div class="top">
+      <div class="brand">
+        <span class="logoDot"></span>
+        <span>MN AGRIFARM</span>
+      </div>
+      <div class="nav">
+        <a class="btn" href="#roles">Open Roles</a>
+        <a class="btn" href="#process">Hiring Process</a>
+        <a class="btn primary" href="#apply">Apply Now</a>
+      </div>
     </div>
 
-    <div class="card">
-      <h2>Apply Now</h2>
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Careers at MN Agrifarm</h1>
+      <p>
+        We’re building a reliable team to support farming, production, and customer service. If you’re hardworking, honest,
+        and ready to learn, we want to hear from you.
+      </p>
 
-      <form id="applyForm">
-        <div class="row">
-          <div>
-            <label>Full Name *</label>
-            <input name="name" required />
+      <div class="cta">
+        <a class="btn primary" href="#apply">Apply Now</a>
+        <a class="btn" href="#standards">Hiring Standards</a>
+      </div>
+
+      <div class="pillRow" aria-label="Trust signals">
+        <span class="pill"><span class="dot"></span> Safety-first workplace</span>
+        <span class="pill"><span class="dot"></span> Respectful team culture</span>
+        <span class="pill"><span class="dot"></span> Clear hiring steps</span>
+      </div>
+    </section>
+
+    <!-- Legitimacy / Trust -->
+    <section class="grid cols-3" style="margin-top:14px" id="legitimacy">
+      <div class="card">
+        <h2>Company legitimacy</h2>
+        <p class="muted" style="margin:0">
+          MN Agrifarm is a real operating agribusiness focused on quality, consistency, and accountability.
+          We hire based on reliability, work ethic, and respect for people and property.
+        </p>
+        <div class="tagRow">
+          <span class="tag"><span class="miniDot"></span> Clear communication</span>
+          <span class="tag"><span class="miniDot"></span> Verified contact</span>
+          <span class="tag"><span class="miniDot"></span> Structured onboarding</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>What you can expect</h2>
+        <ul>
+          <li>Transparent job duties and schedules</li>
+          <li>Training for tools/tasks you’ll use</li>
+          <li>Respectful management and teamwork</li>
+          <li>Safe work standards and procedures</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>What we look for</h2>
+        <ul>
+          <li>On-time attendance and reliability</li>
+          <li>Positive attitude & willingness to learn</li>
+          <li>Honesty and accountability</li>
+          <li>Ability to follow safety instructions</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Open Roles -->
+    <section style="margin-top:14px" id="roles">
+      <div class="card soft">
+        <h2>Open positions</h2>
+        <p class="muted" style="margin:0 0 10px">
+          Choose a role that fits your skills. Don’t see your exact match? Select “Other” on the application.
+        </p>
+
+        <div class="grid cols-3">
+          <div class="card role">
+            <h3>Farm Hand / Field Worker</h3>
+            <div class="tagRow">
+              <span class="tag">On-site</span>
+              <span class="tag">Full-time / Seasonal</span>
+            </div>
+            <p class="muted">Planting, harvesting, packing, cleaning, and general farm support.</p>
           </div>
-          <div>
-            <label>Email *</label>
-            <input name="email" type="email" required />
+
+          <div class="card role">
+            <h3>Livestock Attendant</h3>
+            <div class="tagRow">
+              <span class="tag">On-site</span>
+              <span class="tag">Full-time</span>
+            </div>
+            <p class="muted">Feeding, cleaning, monitoring animal health, basic maintenance.</p>
+          </div>
+
+          <div class="card role">
+            <h3>Farm Store Assistant</h3>
+            <div class="tagRow">
+              <span class="tag">Customer-facing</span>
+              <span class="tag">Part-time</span>
+            </div>
+            <p class="muted">Assist customers, inventory support, organize produce and products.</p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="row">
-          <div>
-            <label>Phone *</label>
-            <input name="phone" required />
-          </div>
-          <div>
-            <label>Position *</label>
-            <select name="position" required>
-              <option value="">Select Position</option>
-              <option>Farm Hand / Field Worker</option>
-              <option>Livestock Attendant</option>
-              <option>Farm Store Assistant</option>
-              <option>Other</option>
-            </select>
-          </div>
+    <!-- Standards + Process -->
+    <section class="grid cols-2" style="margin-top:14px">
+      <div class="card" id="standards">
+        <h2>Hiring standards</h2>
+        <ul>
+          <li><b>Integrity:</b> honesty with time, duties, and communication</li>
+          <li><b>Reliability:</b> consistent attendance and punctuality</li>
+          <li><b>Safety:</b> follows instructions, uses equipment correctly</li>
+          <li><b>Respect:</b> professional behavior with team and customers</li>
+          <li><b>Readiness:</b> ability to work in outdoor/physical conditions (role dependent)</li>
+        </ul>
+        <p class="muted" style="margin-top:10px">
+          We may request a short call, references, or a quick on-site visit depending on the role.
+        </p>
+      </div>
+
+      <div class="card" id="process">
+        <h2>Hiring process</h2>
+        <ol>
+          <li><b>Apply online</b> (1–3 minutes)</li>
+          <li><b>Screening</b> (quick phone call or email)</li>
+          <li><b>Interview</b> (virtual or in-person)</li>
+          <li><b>Offer</b> (role details + start date)</li>
+          <li><b>Onboarding</b> (paperwork + training + first-day guidance)</li>
+        </ol>
+        <div class="tagRow" style="margin-top:10px">
+          <span class="tag"><span class="miniDot"></span> Fast response</span>
+          <span class="tag"><span class="miniDot"></span> Clear expectations</span>
         </div>
+      </div>
+    </section>
 
-        <label>Availability</label>
-        <select name="availability">
-          <option>Any</option>
-          <option>Weekdays</option>
-          <option>Weekends</option>
-          <option>Seasonal</option>
-        </select>
+    <!-- Apply -->
+    <section class="grid cols-2" style="margin-top:14px" id="apply">
+      <div class="card">
+        <h2>Apply now</h2>
+        <p class="muted" style="margin:0 0 12px">
+          Fill this form and we’ll receive your application at <b>hiring@mnagrifarm.com</b>.
+        </p>
 
-        <label>Message</label>
-        <textarea name="message" placeholder="Tell us your experience and availability..."></textarea>
+        <form id="applyForm">
+          <div class="two">
+            <div>
+              <label>Full Name *</label>
+              <input name="name" required placeholder="Your full name" />
+            </div>
+            <div>
+              <label>Email *</label>
+              <input name="email" type="email" required placeholder="you@email.com" />
+            </div>
+          </div>
 
-        <button id="submitBtn" type="submit">Submit Application</button>
+          <div class="two">
+            <div>
+              <label>Phone *</label>
+              <input name="phone" required placeholder="(555) 555-5555" />
+            </div>
+            <div>
+              <label>Position *</label>
+              <select name="position" required>
+                <option value="">Select a position</option>
+                <option>Farm Hand / Field Worker</option>
+                <option>Livestock Attendant</option>
+                <option>Farm Store Assistant</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="two">
+            <div>
+              <label>Availability</label>
+              <select name="availability">
+                <option>Any</option>
+                <option>Weekdays</option>
+                <option>Weekends</option>
+                <option>Seasonal</option>
+              </select>
+            </div>
+            <div>
+              <label>Location (City/State)</label>
+              <input name="location" placeholder="Your city, state" />
+            </div>
+          </div>
 
-        <div id="ok" class="ok">✅ Submitted! We received your application.</div>
-        <div id="err" class="err">❌ Something went wrong. Please try again.</div>
-      </form>
+          <div>
+            <label>Message (experience / skills)</label>
+            <textarea name="message" placeholder="Tell us about your experience, schedule, and any skills (equipment, animal care, driving, customer service, etc.)"></textarea>
+          </div>
+
+          <button id="submitBtn" class="btn primary" type="submit">Submit Application</button>
+
+          <div id="ok" class="ok">✅ Submitted! We received your application.</div>
+          <div id="err" class="err">❌ Something went wrong. Please try again.</div>
+        </form>
+      </div>
+
+      <div class="card soft">
+        <h2>Professional notes</h2>
+        <ul>
+          <li>Only apply through this official page (avoid scammers).</li>
+          <li>We do not request money to apply or get hired.</li>
+          <li>If you’re unsure, email: <b>hiring@mnagrifarm.com</b></li>
+        </ul>
+
+        <div class="card" style="margin-top:12px">
+          <h2 style="margin:0 0 8px">Equal opportunity</h2>
+          <p class="muted" style="margin:0">
+            MN Agrifarm considers applicants based on qualifications, merit, and business needs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <span>© <span id="y"></span> MN Agrifarm. All rights reserved.</span>
+      <span class="muted">Contact: <b>hiring@mnagrifarm.com</b></span>
     </div>
-  </main>
+  </div>
 
   <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
     const form = document.getElementById("applyForm");
     const ok = document.getElementById("ok");
     const err = document.getElementById("err");
