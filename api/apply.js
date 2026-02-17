@@ -29,40 +29,37 @@ module.exports = async function handler(req, res) {
   try {
     const r = await fetch("https://api.resend.com/emails", {
       method: "POST",
-     headers: {
-  "Authorization": `Bearer ${process.env.RESEND_API_KEY}`,
-  "Content-Type": "application/json"
-},
+      headers: {
+        Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
-  from: `MN Agrifarm <${process.env.FROM_EMAIL}>`,
-  to: [process.env.TO_EMAIL],
-  reply_to: email,
-  subject: `New Application: ${position || "Job"} - ${name || "Unknown"}`,
-  html: `
-    <h2>New Application</h2>
-    <p><b>Name:</b> ${name}</p>
-    <p><b>Email:</b> ${email}</p>
-    <p><b>Phone:</b> ${phone}</p>
-    <p><b>Position:</b> ${position}</p>
-    <p><b>Availability:</b> ${availability}</p>
-    <p><b>Location:</b> ${location}</p>
-    <p><b>Message:</b><br/>${String(message).replace(/\n/g, "<br/>")}</p>
-  `,
-}),
+        from: `MN Agrifarm <${process.env.FROM_EMAIL}>`,
+        to: [process.env.TO_EMAIL],
+        reply_to: email,
+        subject: `New Application: ${position || "Job"} — ${name || "Unknown"}`,
+        html: `
+          <h2>New Application</h2>
+          <p><b>Name:</b> ${name}</p>
+          <p><b>Email:</b> ${email}</p>
+          <p><b>Phone:</b> ${phone}</p>
+          <p><b>Position:</b> ${position}</p>
+          <p><b>Availability:</b> ${availability}</p>
+          <p><b>Location:</b> ${location}</p>
+          <p><b>Message:</b><br/>${String(message).replace(/\n/g, "<br/>")}</p>
+        `,
+      }),
     });
 
     const text = await r.text(); // Resend returns useful error text
     if (!r.ok) {
       console.error("Resend error:", r.status, text);
-     return res.status(500).json({ 
-  success: false, 
-  error: `Resend ${r.status}: ${text}` 
-}); 
-return res.status(200).json({ success: true });
- catch (err) {
+      return res.status(500).json({ success: false, error: `Resend ${r.status}: ${text}` });
+    }
+
+    return res.status(200).json({ success: true });
+  } catch (err) {
     console.error("Server error:", err);
-  return res.status(500).json({
-    success: false,
-    error: `Server error: ${err.message}`
-  });
-}
+    return res.status(500).json({ success: false, error: "Server error sending email" });
+  }
+};
