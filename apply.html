@@ -1,0 +1,295 @@
+   <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Careers | MN Agrifarm</title>
+
+    <style>
+         :root{
+      --bg1:#071a12;
+      --bg2:#0b2b1c;
+      --card:rgba(255,255,255,.08);
+      --card2:rgba(255,255,255,.06);
+      --border:rgba(255,255,255,.14);
+      --text:#ecfff3;
+      --muted:#bfe3cc;
+      --brand:#22c55e;
+      --brand2:#16a34a;
+      --warn:#fbbf24;
+      --shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 420px at 15% 0%, rgba(34,197,94,.25), transparent 60%),
+        radial-gradient(700px 420px at 85% 10%, rgba(251,191,36,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+    }
+    a{ color:inherit; }
+
+    .wrap{ max-width:1120px; margin:0 auto; padding:22px 16px 44px; }
+
+    /* Top bar */
+    .top{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:10px 2px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:900; letter-spacing:.6px;
+    }
+    .logoDot{
+      width:12px;height:12px;border-radius:999px;background:var(--brand);
+      box-shadow:0 0 0 6px rgba(34,197,94,.15);
+    }
+    .nav{
+      display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:11px 14px; border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      text-decoration:none; font-weight:700;
+    }
+    .btn.primary{
+      background:linear-gradient(180deg, var(--brand), var(--brand2));
+      border-color:transparent; color:#062010;
+    }
+
+    /* Hero */
+    .hero{
+      margin-top:14px;
+      padding:22px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:-80px -120px auto auto;
+      width:420px; height:420px; border-radius:999px;
+      background:radial-gradient(circle at 30% 30%, rgba(34,197,94,.35), transparent 55%);
+      filter: blur(2px);
+      pointer-events:none;
+    }
+    .hero h1{ margin:0 0 8px; font-size:40px; line-height:1.05; }
+    .hero p{ margin:0 0 14px; color:var(--muted); max-width:78ch; }
+    .hero .cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+    .pillRow{ display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:8px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      font-size:13px;
+    }
+    .pill .dot{
+      width:8px;height:8px;border-radius:999px;background:var(--warn);
+      box-shadow:0 0 0 4px rgba(251,191,36,.14);
+    }
+  
+    /* Sections */
+    .grid{ display:grid; gap:14px; }
+    @media(min-width:900px){
+      .grid.cols-3{ grid-template-columns:repeat(3, 1fr); }
+      .grid.cols-2{ grid-template-columns:1.15fr .85fr; }
+    }
+
+    .card{
+      padding:16px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      background:var(--card);
+      box-shadow: 0 8px 22px rgba(0,0,0,.18);
+    }
+    .card.soft{ background:var(--card2); }
+    .card h2{ margin:0 0 10px; font-size:20px; }
+    .muted{ color:var(--muted); }
+    ul, ol{ margin:10px 0 0; padding-left:18px; color:var(--muted); }
+    li{ margin:6px 0; }
+
+    .tagRow{ display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      font-size:12px; color:var(--muted);
+    }
+    .tag .miniDot{
+      width:7px;height:7px;border-radius:999px;background:var(--brand);
+      box-shadow:0 0 0 4px rgba(34,197,94,.12);
+    }
+
+    /* Roles */
+    .role h3{ margin:0 0 6px; font-size:16px; }
+    .role p{ margin:0; color:var(--muted); }
+
+    /* Form */
+    form{ display:grid; gap:10px; }
+    label{ font-size:13px; color:var(--muted); font-weight:700; }
+    input, select, textarea{
+      width:100%;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.18);
+      color:var(--text);
+      outline:none;
+    }
+    input::placeholder, textarea::placeholder{ color:rgba(191,227,204,.7); }
+    textarea{ min-height:120px; resize:vertical; }
+    .two{ display:grid; gap:10px; }
+    @media(min-width:720px){ .two{ grid-template-columns:1fr 1fr; } }
+
+    .ok, .err{
+      display:none; padding:10px 12px; border-radius:12px; font-weight:700;
+      border:1px solid var(--border);
+    }
+    .ok{ background:rgba(34,197,94,.12); color:#d6ffe5; }
+    .err{ background:rgba(239,68,68,.12); color:#ffd3d3; }
+
+    .footer{
+      margin-top:18px;
+      padding-top:14px;
+      border-top:1px solid rgba(255,255,255,.14);
+      color:rgba(191,227,204,.85);
+      font-size:13px;
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    </style>
+    <!-- Apply -->
+    <section class="grid cols-2" style="margin-top:14px" id="apply">
+      <div class="card">
+        <h2>Apply now</h2>
+        <p class="muted" style="margin:0 0 12px">
+          Fill this form and we’ll receive your application at <b>hiring@mnagrifarm.com</b>.
+        </p>
+
+        <form id="applyForm">
+          <div class="two">
+            <div>
+              <label>Full Name *</label>
+              <input name="name" required placeholder="Your full name" />
+            </div>
+            <div>
+              <label>Email *</label>
+              <input name="email" type="email" required placeholder="you@email.com" />
+            </div>
+          </div>
+
+          <div class="two">
+            <div>
+              <label>Phone *</label>
+              <input name="phone" required placeholder="(555) 555-5555" />
+            </div>
+            <div>
+              <label>Position *</label>
+              <select name="position" required>
+                <option value="">Select a position</option>
+                <option>Remote Farm Store Assistant</option>
+                <option>Remote Customer Service Representative</option>
+                <option>Remote Virtual Assistant</option>
+                <option>Remote Payroll Assistant</option>
+                <option>Remote Data Entry Assitant</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="two">
+            <div>
+              <label>Availability</label>
+              <select name="availability">
+                <option>Any</option>
+                <option>Weekdays</option>
+                <option>Weekends</option>
+                <option>Seasonal</option>
+              </select>
+            </div>
+            <div>
+              <label>Location (City/State)</label>
+              <input name="location" placeholder="Your city, state" />
+            </div>
+          </div>
+
+          <div>
+            <label>Message (experience / skills)</label>
+            <textarea name="message" placeholder="Tell us about your experience, schedule, and any skills (equipment, animal care, driving, customer service, etc.)"></textarea>
+          </div>
+
+          <button id="submitBtn" class="btn primary" type="submit">Submit Application</button>
+
+          <div id="ok" class="ok">✅ Submitted! We received your application.</div>
+          <div id="err" class="err">❌ Something went wrong. Please try again.</div>
+        </form>
+      </div>
+
+      <div class="card soft">
+        <h2>Professional notes</h2>
+        <ul>
+          <li>Only apply through this official page (avoid scammers).</li>
+          <li>We do not request money to apply or get hired.</li>
+          <li>If you’re unsure, email: <b>hiring@mnagrifarm.com</b></li>
+        </ul>
+
+        <div class="card" style="margin-top:12px">
+          <h2 style="margin:0 0 8px">Equal opportunity</h2>
+          <p class="muted" style="margin:0">
+            MN Agrifarm considers applicants based on qualifications, merit, and business needs.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <span>© <span id="y"></span> MN Agrifarm. All rights reserved.</span>
+      <span class="muted">Contact: <b>hiring@mnagrifarm.com</b></span>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    const form = document.getElementById("applyForm");
+    const ok = document.getElementById("ok");
+    const err = document.getElementById("err");
+    const btn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      ok.style.display = "none";
+      err.style.display = "none";
+      btn.disabled = true;
+      btn.textContent = "Submitting...";
+
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        const res = await fetch("/api/apply", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+
+        if (!res.ok) throw new Error("Request failed");
+        ok.style.display = "block";
+        form.reset();
+      } catch (e) {
+        err.style.display = "block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Submit Application";
+      }
+    });
+  </script>
+</body>
+</html>
