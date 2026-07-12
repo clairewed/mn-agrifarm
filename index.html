@@ -128,31 +128,7 @@
     .role h3{ margin:0 0 8px; font-size:18px; color:var(--text); }
     .role p{ margin:0; color:var(--muted); }
 
-    /* Form */
-    form{ display:grid; gap:12px; }
-    label{ font-size:14px; color:var(--muted); font-weight:600; }
-    input, select, textarea{
-      width:100%;
-      padding:12px;
-      border-radius:8px;
-      border:1px solid var(--border);
-      background:var(--card2);
-      color:var(--text);
-      outline:none;
-      font-size:14px;
-    }
-    input::placeholder, textarea::placeholder{ color:rgba(74,93,82,.6); }
-    textarea{ min-height:120px; resize:vertical; }
-    .two{ display:grid; gap:12px; }
-    @media(min-width:720px){ .two{ grid-template-columns:1fr 1fr; } }
-
-    .ok, .err{
-      display:none; padding:10px 12px; border-radius:8px; font-weight:600;
-      border:1px solid var(--border);
-    }
-    .ok{ background:rgba(40,167,69,.12); color:var(--brand); }
-    .err{ background:rgba(239,68,68,.12); color:#d9534f; }
-
+    /* Footer */
     .footer{
       margin-top:24px;
       padding-top:16px;
@@ -201,5 +177,33 @@
     <!-- Legitimacy / Trust -->
     <section class="grid cols-3" style="margin-top:24px" id="legitimacy">
       <div class="card">
+        <h2>Company legitimacy</h2>
+        <p class="muted">
+          MN Agrifarm is a real operating agribusiness focused on quality, consistency, and accountability.
+          We hire based on reliability, work ethic, and respect for people and property.
+        </p>
+        <div class="tagRow">
+          <span class="tag"><span class="miniDot"></span> Clear communication</span>
+          <span class="tag"><span class="miniDot"></span> Verified contact</span>
+          <span class="tag"><span class="miniDot"></span> Structured onboarding</span>
+        </div>
+      </div>
 
-    </html>
+      <div class="card">
+        <h2>What you can expect</h2>
+        <ul>
+          <li>Transparent job duties and schedules</li>
+          <li>Training for tools/tasks you’ll use</li>
+          <li>Respectful management and teamwork</li>
+          <li>Safe work standards and procedures</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>What we look for</h2>
+        <ul>
+          <li>On-time attendance and reliability</li>
+          <li>Positive attitude & willingness to learn</li>
+          <li>Honesty and accountability</li>
+          <li>Ability to follow safety instructions</li>
+        </
